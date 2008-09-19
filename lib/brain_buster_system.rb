@@ -24,7 +24,7 @@ module BrainBusterSystem
     raise_if_salt_isnt_set
     return true if (captcha_passed? || !brain_buster_enabled)
     debug_brain_buster { "Initializing the brain_buster object."}
-    assigns[:captcha] = find_brain_buster
+    @captcha = find_brain_buster
   end
   
   # Ensure that the answer attempt from the params successfully passes the captcha.
