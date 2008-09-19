@@ -36,7 +36,7 @@ module BrainBusterSystem
     return true if (captcha_passed? || !brain_buster_enabled)
     return captcha_failure unless (params[:captcha_id] && params[:captcha_answer])
       
-    captcha = assigns[:captcha] = find_brain_buster
+    captcha = @captcha = find_brain_buster
     is_success = captcha.attempt?(params[:captcha_answer])
     debug_brain_buster { is_success ? "Captcha successfully passed." : "Captcha failed - #{ captcha.inspect }" }
     set_captcha_status(is_success)
